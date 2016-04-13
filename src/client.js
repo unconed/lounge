@@ -184,7 +184,7 @@ Client.prototype.connect = function(args) {
 		tls: network.tls,
 		localAddress: config.bind,
 		rejectUnauthorized: false,
-		auto_reconnect: false, // TODO: Enable auto reconnection
+		auto_reconnect: true,
 	});
 
 	network.irc.on("registered", function() {
