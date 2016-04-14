@@ -35,6 +35,7 @@ var inputs = [
 	"part",
 	"action",
 	"connect",
+	"disconnect",
 	"invite",
 	"kick",
 	"mode",
