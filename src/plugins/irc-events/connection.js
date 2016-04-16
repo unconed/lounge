@@ -35,7 +35,7 @@ module.exports = function(irc, network) {
 	});
 
 	irc.on("socket error", function(err) {
-		console.log(err);
+		log.debug("IRC socket error", err);
 		client.emit("msg", {
 			chan: network.channels[0].id,
 			msg: new Msg({
