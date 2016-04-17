@@ -583,6 +583,7 @@ $(function() {
 			clear();
 			return;
 		}
+		$("#windows .active .chat").scrollBottom();
 		socket.emit("input", {
 			target: chat.data("id"),
 			text: text
@@ -656,15 +657,20 @@ $(function() {
 		}
 
 		viewport.removeClass("lt");
-		$("#windows .active").removeClass("active");
+		$("#windows .active")
+			.removeClass("active")
+			.find(".chat")
+			.unsticky();
 
 		var chan = $(target)
 			.addClass("active")
 			.trigger("show")
-			.css("z-index", top++)
-			.find(".chat")
-			.sticky()
-			.end();
+			.css("z-index", top++);
+
+		var chanChat = chan.find(".chat");
+		if (chanChat.length > 0) {
+			chanChat.sticky();
+		}
 
 		var title = "The Lounge";
 		if (chan.data("title")) {
